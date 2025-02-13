@@ -24,10 +24,10 @@ jobs:
 
       - name: Deploy to DigitalOcean
         run: |
-          ssh -T root@147.182.238.43 <<EOF  # Your actual server IP
-            cd /var/www/hngx-stage2-fastapi-book-project
-            git pull origin main
-            source venv/bin/activate
-            pip install -r requirements.txt
-            sudo systemctl restart fastapi
+          ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no root@147.182.238.43 <<EOF
+          cd /var/www/hngx-stage2-fastapi-book-project
+          git pull origin main
+          source venv/bin/activate
+          pip install -r requirements.txt
+          sudo systemctl restart fastapi
           EOF
